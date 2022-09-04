@@ -8,18 +8,18 @@ global timeScale := 1.00	; Default 1.00, higher value = slower script
 
 #SingleInstance Force
 #MaxThreadsPerHotkey 3
-#Include "%A_ScriptDir%\maps\bloody_easy.ahk"
-#Include "%A_ScriptDir%\maps\ouch_easy.ahk"
-#Include "%A_ScriptDir%\maps\quad_easy.ahk"
-#Include "%A_ScriptDir%\maps\dark_easy.ahk"
-#Include "%A_ScriptDir%\maps\flooded_easy.ahk"
-#Include "%A_ScriptDir%\maps\infernal_easy.ahk"
-#Include "%A_ScriptDir%\maps\muddy_easy.ahk"
-#Include "%A_ScriptDir%\maps\ravine_easy.ahk"
-#Include "%A_ScriptDir%\maps\sanctuary_easy.ahk"
-#Include "%A_ScriptDir%\maps\workshop_easy.ahk"
+#Include %A_ScriptDir%\maps\bloody_easy.ahk
+#Include %A_ScriptDir%\maps\ouch_easy.ahk
+#Include %A_ScriptDir%\maps\quad_easy.ahk
+#Include %A_ScriptDir%\maps\dark_easy.ahk
+#Include %A_ScriptDir%\maps\flooded_easy.ahk
+#Include %A_ScriptDir%\maps\infernal_easy.ahk
+#Include %A_ScriptDir%\maps\muddy_easy.ahk
+#Include %A_ScriptDir%\maps\ravine_easy.ahk
+#Include %A_ScriptDir%\maps\sanctuary_easy.ahk
+#Include %A_ScriptDir%\maps\workshop_easy.ahk
 
-global eventType := "fireworks"
+global eventType := "totem_collection"
 global stateIndicators := ["play_home", "stage_select", "in_game", "collect", eventType "\event"]
 global menuState := ""
 global mapIndicators := ["sanc", "ravine", "flooded", "infernal", "bloody", "workshop", "quad", "dark", "muddy", "ouch"]
