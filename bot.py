@@ -2,8 +2,9 @@ import pyautogui, time, os, logging, sys, random, subprocess
 from pathlib import Path
 from maps import *
 
-timeScale = 1.0
-logging.basicConfig(level=logging.DEBUG, format='%(asctime)s.%(msecs)03d: %(message)s', datefmt='%H:%M:%S')
+timeScale = 1.1
+windowName = "BloonsTD6" #+ " [Streaming]"
+logging.basicConfig(level=logging.INFO, format='%(asctime)s.%(msecs)03d: %(message)s', datefmt='%H:%M:%S')
 
 eventType = "totem_collection"
 stateIndicators = ["play_home", "stage_select", "in_game", "collect", eventType + "\event"]
@@ -15,9 +16,9 @@ resDir = Path('res/')
 
 def main():
     pyautogui.sleep(1)
-    while pyautogui.getActiveWindow().title == "BloonsTD6":
+    while pyautogui.getActiveWindow().title == windowName:
         menuState = CheckMenuState()
-        print(menuState)
+        logging.debug(menuState)
         if menuState == "play_home":
             clickElement(menuState, 1)
         elif menuState == "stage_select":
@@ -30,11 +31,11 @@ def main():
             clickElement("play_collect", 1)
 
 def searchImage(picName):
-    # win = pyautogui.getActiveWindow()
+    win = pyautogui.getActiveWindow()
     # return pyautogui.locateOnScreen(str(resDir / f"{picName}.png"), region=(win.left, win.top, win.right, win.bottom))
     # return pyautogui.locateOnScreen(str(resDir / f"{picName}.png"))
-    res = pyautogui.locateCenterOnScreen(str(resDir / f"{picName}.png"), confidence=0.95)
-    logging.info((picName, res))
+    res = pyautogui.locateCenterOnScreen(str(resDir / f"{picName}.png"), confidence=0.95, region=(win.left, win.top, win.right, win.bottom))
+    logging.debug((picName, res))
     return res
 def clickElement(picName, sleepTime):
     res = searchImage(picName)
@@ -70,11 +71,12 @@ def selectGameScript():
     mapName = getMapName()
     with open(f"maps/{mapName}_easy.ahk", 'r') as file:
         script = file.read()
-        script = 'timeScale := 1.0\n' + '\n'.join(script.splitlines()[1:-1])
+        script = f'timeScale := {timeScale}\n' + '\n'.join(script.splitlines()[1:-1])
     with open("maps/tmp.ahk", "w") as file:
         file.write(script)
     ret = subprocess.run("./AutoHotkey_2.0-beta.7/AutoHotkey64.exe maps/tmp.ahk", capture_output=True)
-    print(ret)
+    selectGameScript.count = getattr(selectGameScript, 'count', 0) + 1
+    logging.info((ret, selectGameScript.count))
     checkVictoryOrDefeat()
 def openBoxes():
     sleepTime = 1
@@ -108,7 +110,7 @@ def checkVictoryOrDefeat():
 
 if __name__ == "__main__":
     try:
-        pyautogui.getWindowsWithTitle("BloonsTD6")[0].activate()
+        pyautogui.getWindowsWithTitle(windowName)[0].activate()
     except:
         pass
     main()
