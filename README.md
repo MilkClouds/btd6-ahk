@@ -20,8 +20,9 @@ pip install pillow
 ## AutoHotkey v2
 
 - [Download](https://www.autohotkey.com/download/ahk-v2.zip)
-- [Documentation](https://lexikos.github.io/v2/docs/AutoHotkey.htm)
-  I intended to download ahk v2 file and unzip into same directory with `bot.py`. You can change autohotkey directory by changing `ret = subprocess.run("./AutoHotkey_2.0-beta.7/AutoHotkey64.exe maps/tmp.ahk", capture_output=True)` on `bot.py`
+- [Documentation](https://lexikos.github.io/v2/docs/AutoHotkey.htm)  
+
+I intended to download ahk v2 file and unzip into same directory with `bot.py`. You can change autohotkey directory by changing `ret = subprocess.run("./AutoHotkey_2.0-beta.7/AutoHotkey64.exe maps/tmp.ahk", capture_output=True)` on `bot.py`
 
 ## Requirements:
 
