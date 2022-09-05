@@ -2,7 +2,7 @@ import pyautogui, time, os, logging, sys, random, subprocess
 from pathlib import Path
 from maps import *
 
-timeScale = 1.1
+timeScale = 1.0
 windowName = "BloonsTD6" #+ " [Streaming]"
 logging.basicConfig(level=logging.INFO, format='%(asctime)s.%(msecs)03d: %(message)s', datefmt='%H:%M:%S')
 
@@ -32,8 +32,6 @@ def main():
 
 def searchImage(picName):
     win = pyautogui.getActiveWindow()
-    # return pyautogui.locateOnScreen(str(resDir / f"{picName}.png"), region=(win.left, win.top, win.right, win.bottom))
-    # return pyautogui.locateOnScreen(str(resDir / f"{picName}.png"))
     res = pyautogui.locateCenterOnScreen(str(resDir / f"{picName}.png"), confidence=0.95, region=(win.left, win.top, win.right, win.bottom))
     logging.debug((picName, res))
     return res
