@@ -3,6 +3,8 @@ This repository ported main AHK script of [btd6-ahk](https://github.com/Valokood
 You can set logging level into `logging.DEBUG` or `logging.INFO`. Former gives more information to you.
 Since pyautogui do imagesearch using opencv, you need to install opencv. I set confidence level of imagesearch to 0.95. Imagesearch worked well after porting this to python script.
 
+Refer to [line 223 of pyscreeze/__init__.py](https://github.com/asweigart/pyscreeze/blob/b693ca9b2c964988a7e924a52f73e15db38511a8/pyscreeze/__init__.py#L223) to see how pyscreeze(pyautogui) matches image on screen. 
+
 # Setup
 
 ## Anaconda3
